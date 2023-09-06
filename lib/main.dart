@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:timer_cryptic_hunt/countdown.dart';
+import 'package:flutter_svg/svg.dart';
 
 void main() {
   runApp(const timer_cryptic_hunt());
@@ -8,8 +9,6 @@ void main() {
 // ignore: camel_case_types
 class timer_cryptic_hunt extends StatelessWidget {
   const timer_cryptic_hunt({super.key});
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -21,109 +20,148 @@ class timer_cryptic_hunt extends StatelessWidget {
       home: Scaffold(
         backgroundColor: Colors.black,
         body: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: Column(
-          children: <Widget>[
-            const SizedBox(
-              height: 50.0,
-            ),
-            const Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            padding: const EdgeInsets.all(20.0),
+            child: Column(
               children: <Widget>[
-                Icon(
-                  Icons.density_medium_outlined,
-                  color: Colors.orange,
-                  size: 30.0,
+                const SizedBox(
+                  height: 50.0,
                 ),
-                Icon(
-                  Icons.circle_notifications,
-                  color: Colors.deepOrange,
-                  size: 30.0,
+                const Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Icon(
+                      Icons.density_medium_outlined,
+                      color: Color(0xFFF5753B),
+                      size: 28.0,
+                    ),
+                    Icon(
+                      Icons.notifications_none,
+                      color: Color(0xFFF5753B),
+                      size: 28.0,
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 50.0,
+                ),
+                Row(
+                  children: <Widget>[
+                    const SizedBox(
+                      height: 26,
+                      width: 25,
+                      child: Icon(
+                        Icons.arrow_back_ios,
+                        color: Colors.white,
+                      ),
+                    ),
+                    Container(
+                      height: 182,
+                      width: 315,
+                      decoration: BoxDecoration(
+                        color: const Color(0xFFFCF3C5),
+                        border: Border.all(
+                          color: const Color(0xFFFCF3C5),
+                        ),
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(20.0)),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(10),
+                        child: Container(
+                          height: 118.88,
+                          width: 294,
+                          color: const Color(0xFFFCF3C5),
+                          child: Column(
+                            children: <Widget>[
+                              Row(
+                                children: <Widget>[
+                                  const Column(
+                                    children: <Widget>[
+                                      SizedBox(
+                                        height: 15,
+                                      ),
+                                      Text(
+                                        'Cryptic Hunt',
+                                        style: TextStyle(
+                                          color: Color(0xFFEF4136),
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 28,
+                                          fontFamily: 'Poppins',
+                                        ),
+                                        textAlign: TextAlign.left,
+                                      ),
+                                      /*
+                                      Stack(
+                                          alignment: Alignment.topLeft,
+                                          children: <Widget>[
+                                            Positioned(
+                                              left: 200,
+                                              top: 400,
+                                              child: Text(
+                                                'Phase 1',
+                                                style: TextStyle(
+                                                    color: Colors.black,
+                                                    fontSize: 14,
+                                                    fontWeight: FontWeight.bold,
+                                                    fontFamily: 'Poppins'),
+                                                textAlign: TextAlign.left,
+                                              ),
+                                            ),
+                                          ])
+                                          */
+                                          
+                                    ],
+                                  ),
+                                  const Expanded(child: SizedBox()),
+                                  SvgPicture.asset('assets/g12.svg')
+                                ],
+                              ),
+                              const Divider(
+                                color: Colors.black,
+                              ),
+                              const Padding(
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: 8.0, vertical: 10.0),
+                                child: Text(
+                                  'Tick! Tock! Event Starts soon',
+                                  style: TextStyle(
+                                    fontSize: 19,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold,
+                                    fontFamily: 'Poppins',
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 2.2,
+                    ),
+                    const SizedBox(
+                      height: 26,
+                      width: 28,
+                      child: Icon(
+                        Icons.arrow_forward_ios,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                SizedBox(
+                  height: 66,
+                  width: 315,
+                  child: countdown(
+                      deadline: DateTime.now().add(const Duration(hours: 4))),
                 ),
               ],
-            ),
-            const SizedBox(
-              height: 30.0,
-            ),
-            Container(
-              padding: const EdgeInsets.all(10.0),
-              height: 150,
-              width: 400,
-              decoration: BoxDecoration(
-                color: const Color.fromARGB(255, 245, 234, 201),
-                border: Border.all(
-                  color: const Color.fromARGB(255, 245, 234, 201),
-                ),
-                borderRadius: const BorderRadius.all(Radius.circular(12.0)),
-              ),
-              child: const Column(
-                children: <Widget>[
-                  SizedBox(
-                      height: 20.0,
-                    ),
-                  Align(
-                    alignment: Alignment.topLeft,
-                    child: Text(
-                    'Cryptic Hunt',
-                    style: TextStyle(
-                    color: Colors.deepOrange,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 30,
-                    ),
-                    )
-                    ),
-                    SizedBox(
-                      height: 20.0,
-                    ),
-                    Align(
-                    alignment: Alignment.topLeft,
-                    child: Text(
-                    'Tick! Tock! Event starts soon!',
-                    style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
-                    ),
-                    )
-                    ),
-                ]
-              ),
-            ),
-            const SizedBox(
-              height: 20.0,
-            ),
-            Container(
-              alignment: Alignment.center,
-              child: countdown(
-              deadline: DateTime.now().add(const Duration(hours: 4),)
-            ),
-            ),
-            const SizedBox(
-              height: 20.0,
-            ),
-            Container(
-              height: 150.0,
-              decoration: BoxDecoration(
-                color: const Color.fromARGB(255, 245, 234, 201),
-                border: Border.all(
-                  color: const Color.fromARGB(255, 245, 234, 201),
-                ),
-                borderRadius: const BorderRadius.all(Radius.circular(12.0)),
-              ),
-            ),
-            const SizedBox(
-              height: 20.0,
-            ),
-            AppBar(
-              backgroundColor: Colors.deepOrange,
-              shape: ContinuousRectangleBorder(
-                borderRadius: BorderRadius.circular(12.0)),
-            )
-          ],
-        )
-      ),
+            )),
       ),
     );
   }
 }
-
