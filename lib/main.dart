@@ -24,7 +24,7 @@ class timer_cryptic_hunt extends StatelessWidget {
             child: Column(
               children: <Widget>[
                 const SizedBox(
-                  height: 50.0,
+                  height: 10.0,
                 ),
                 const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -42,7 +42,7 @@ class timer_cryptic_hunt extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(
-                  height: 50.0,
+                  height: 20.0,
                 ),
                 Row(
                   children: <Widget>[
@@ -150,14 +150,11 @@ class timer_cryptic_hunt extends StatelessWidget {
                     ),
                   ],
                 ),
-                const SizedBox(
-                  height: 10,
-                ),
                 SizedBox(
                   height: 66,
                   width: 315,
                   child: countdown(
-                      deadline: DateTime.now().add(const Duration(hours: 4))),
+                      deadline: DateTime.now().add(const Duration(minutes: 1))),
                 ),
               ],
             )),

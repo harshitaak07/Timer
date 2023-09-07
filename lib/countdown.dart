@@ -6,34 +6,28 @@ import 'package:flutter/material.dart';
 class countdown extends StatefulWidget {
   // declares class for widget
   const countdown({
-    // to declare named paraemeters
     super.key,
-    required this.deadline, // required states that these parameteres are required in the functions
+    required this.deadline, 
   });
 
-  final DateTime deadline; // declares the variables according to specific type
-  // final states that the values are going to be constant and won't be changed
-
+  final DateTime deadline; 
   @override
   State<countdown> createState() => countdownState();
 }
 
 // ignore: camel_case_types
 class countdownState extends State<countdown> {
-  late Timer
-      timer; // declares variables, late states that variables will be used later in program, non nullable
+  late Timer timer; 
   Duration duration = const Duration();
+  late int count;
 
-  @override // initializes state, sets timer
+  @override 
   void initState() {
-    timer = Timer.periodic(
-      const Duration(seconds: 1),
-      (_) => setCountDown(widget.deadline), // calls setCoundDown
-    );
+    timer = Timer.periodic(const Duration(seconds: 1),(_) => setCountDown(widget.deadline),);
     super.initState();
   }
 
-  @override // Clears lifecycle; Ends timer
+  @override 
   void dispose() {
     timer.cancel();
     super.dispose();
@@ -43,7 +37,13 @@ class countdownState extends State<countdown> {
     // deadline passed as a parameter
     final current = DateTime.now();
     final timeRemaining = deadline.difference(current).inSeconds;
-    setState(() => duration = Duration(seconds: timeRemaining));
+    count = timeRemaining;
+    if(count >= 0){
+      setState(() => duration = Duration(seconds: timeRemaining));
+    }
+    else{
+      timer.cancel();
+    }
   }
 
   @override
